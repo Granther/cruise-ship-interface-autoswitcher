@@ -17,7 +17,7 @@ from tkinter import ttk
 from ping import ping
 import time
 
-host = '10.10.1.1'
+host = '10.10.5.5'
 
 def ping_loc():
     text_area.insert(tk.INSERT, str(ping(host)) + '\n')
