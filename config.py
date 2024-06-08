@@ -20,7 +20,7 @@ class Config:
             self.sr_ip = root[5].text
 
             self.beep_timeout = root[6].text
-            self.ping_attemptsempts = root[7].text
+            self.ping_attempts = root[7].text
             self.beep_delay = root[8].text
             self.leaving_wait_aving_wait_time = root[9].text
         except:
