@@ -1,5 +1,9 @@
-from ping import ping
+from ping import *
+from config import Config
 
 class AntennaSSH:
     def __init__(self, host: str, user: str, pwd: str):
-        if ping()
+
+        config = Config()
+
+        if attempt_multiple()

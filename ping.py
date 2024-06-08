@@ -17,4 +17,11 @@ def attempt_multiple(n_times, host):
     return False
 
 
+import xml.etree.ElementTree as ET
+tree = ET.parse('config.xml')
+root = tree.getroot()
+print(root.find('beep_timeout').text)
+print(root[3].text)
+
+
 #print(ping('10.10.5.5'))
