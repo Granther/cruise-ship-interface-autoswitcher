@@ -59,6 +59,11 @@ def ping_textbox():
     text_area.config(state=tk.DISABLED)
     root.after(config.ping_interval, ping_textbox)
 
+def periodic_check():
+    pass
+    root.after(config.periodic_check_interval, periodic_check)
+
 root.after(config.ping_interval, ping_textbox)
+root.after(config.periodic_check_interval, periodic_check)
 
 root.mainloop()

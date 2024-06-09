@@ -25,6 +25,7 @@ class Config:
             self.leaving_wait_aving_wait_time = root[9].text
             self.host_to_ping = root[10].text
             self.ping_interval = int(root[11].text)
+            self.periodic_check_interval = int(root[12].text)
 
         except:
             print(f'ERROR: Unable to parse {self.configPath}')

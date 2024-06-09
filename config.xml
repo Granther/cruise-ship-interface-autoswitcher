@@ -15,4 +15,5 @@
 
     <host_to_ping>10.10.1.1</host_to_ping>
     <ping_interval>750</ping_interval>
+    <periodic_check_interval>10</periodic_check_interval>
 </config>

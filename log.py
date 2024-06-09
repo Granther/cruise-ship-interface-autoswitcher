@@ -1,9 +1,17 @@
 import os
 
+class LogException(Exception):
+    def __init__(self, message):
+        log = Log(self.__class__.__name__, message)
+        super().__init__(message)
 
+class LogGeneralException(LogException):
+    def __init__(self, message):
+        print('right here')
+        super().__init__(message)
 
 class Log:
-    def __init__(self, className: str):
+    def __init__(self, className: str, hotLog = None):
         try:
             self.find_logfile()
         except Exception as e:
@@ -11,6 +19,9 @@ class Log:
             return None
         
         self.className = className
+
+        if hotLog:
+            self.write_log(hotLog)
 
     def find_logfile(self):
         
@@ -28,4 +39,3 @@ class Log:
         
         return True
     
-
