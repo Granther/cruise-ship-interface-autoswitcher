@@ -5,3 +5,16 @@ AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authe
 AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authentication failed.
 AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authentication failed.
 LogGeneralException: Tried to div by 0 dummy
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely

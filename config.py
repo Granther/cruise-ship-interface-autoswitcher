@@ -27,6 +27,9 @@ class Config:
             self.ping_interval = int(root[11].text)
             self.periodic_check_interval = int(root[12].text)
 
+            self.yellow_ping_threshold = int(root[13].text)
+            self.green_ping_threshold = int(root[14].text)
+
         except:
             print(f'ERROR: Unable to parse {self.configPath}')
 

@@ -1,6 +1,7 @@
 from log import Log, LogException
 from config import Config
 from ssh import AntennaSSH
+import time
     
 class UtilParamException(LogException):
     def __init__(self, message):
@@ -13,6 +14,15 @@ class UtilRemoteCommandException(LogException):
 class AntennaSSHException(LogException):
     def __init__(self, message):
         super().__init__(message)
+
+class AntennaException(LogException):
+    def __init__(self, message):
+        super().__init__(message)
+
+class UtilStatusException(LogException):
+    def __init__(self, message):
+        super().__init__(message)
+
 
 class Utils():
 
@@ -34,12 +44,12 @@ class Utils():
         self.config = config or Config
 
     def util_command(self, id, command):
-        if id is 0:
+        if id == 0:
             self.config.sr_ip = '192.168.1.172'
             self.config.sr_ssh_pwd = 'bowieboom123'
             self.config.sr_ssh_user = 'grant'
             conn = (self.config.sr_ip, self.config.sr_ssh_user, self.config.sr_ssh_pwd)
-        elif id is 1:
+        elif id == 1:
             conn = (self.config.lr_ip, self.config.lr_ssh_user, self.config.lr_ssh_pwd)
         else:
             raise UtilParamException('Antenna ID was not 0 or 1')
@@ -47,15 +57,15 @@ class Utils():
         try:
             ssh = AntennaSSH(*conn)
             return ssh.send_command(self.command_dict[command])
-        except AntennaSSHException as e:
-            raise
+        except:
+            raise AntennaSSHException('Exception raised when sending command over SSH')
 
     def iterate_std(self, _, stdout, stderr, fetch_word=None):
-        if stderr != None:
-            stderr_out = ''
-            for line in stderr_out:
-                stderr_out += line
-            raise UtilRemoteCommandException(f'Remote command returned stderr: {stderr_out}')
+        # if stderr != ' ':
+        #     stderr_out = ''
+        #     for line in stderr_out:
+        #         stderr_out += line
+        #     raise UtilRemoteCommandException(f'Remote command returned stderr: {stderr_out}')
         
         if fetch_word == None:
             return True
@@ -89,7 +99,7 @@ class Utils():
             raise UtilRemoteCommandException(f'Antenna interface state does not appear in std: {iterated}', )
 
     def safe_switch(off=None, on=None):
-
+        pass
 
     def switch_antenna(self, wait_time=None):
         sr_state = self.ath0_status(0)
@@ -120,11 +130,28 @@ class Utils():
     def inter_off(self, host):
         try:
             self.util_command(id, 'link down')
-        except AntennaSSHException as e:
-            
+        except AntennaSSHException:
+            raise UtilRemoteCommandException('Exception when sending remote command to set link down')
+
+        time.sleep(2)
+
+        if self.ath0_status(host) == 1:
+            raise UtilStatusException('Link stayed up after being commanded down')
+        
+        return
 
     def inter_on(self, host):
-        self.util_command(id, 'link up')
+        try:
+            self.util_command(id, 'link up')
+        except AntennaSSHException:
+            raise UtilRemoteCommandException('Exception when sending remote command to set link up')
+
+        time.sleep(2)
+
+        if self.ath0_status(host) == 0:
+            raise UtilStatusException('Link stayed down after being commanded up')
+        
+        return
 
     def leaving(self, host):
         pass

@@ -21,42 +21,47 @@ def ping_loc():
 def test(gort):
     print(gort)
 
-ttk.Button(text="Quit", command=root.destroy).place(x=450, y=20)
-ttk.Button(text="Leaving", command=utils.leaving).place(x=450, y=100)
-ttk.Button(text="Reboot SR", command=lambda: utils.reboot(0)).place(x=450, y=140)
-ttk.Button(text="Reboot LR", command=lambda: utils.reboot(1)).place(x=450, y=180)
-ttk.Button(text="SR Interface Off", command=lambda: utils.inter_off(0)).place(x=450, y=220)
-ttk.Button(text="LR Interface Off", command=lambda: utils.inter_off(1)).place(x=450, y=260)
-ttk.Button(text="Switch Antennas", command=utils.switch_antenna).place(x=450, y=300)
+x_col = 250
 
-text_area = Text(root, wrap=tk.WORD, width=15, height=20)
+ttk.Button(text="Quit", command=lambda: root.destroy()).place(x=x_col, y=20)
+ttk.Button(text="Leaving", command=lambda: utils.leaving()).place(x=x_col, y=100)
+ttk.Button(text="Reboot SR", command=lambda: utils.reboot(0)).place(x=x_col, y=140)
+ttk.Button(text="Reboot LR", command=lambda: utils.reboot(1)).place(x=x_col, y=180)
+ttk.Button(text="SR Interface Off", command=lambda: utils.inter_off(0)).place(x=x_col, y=220)
+ttk.Button(text="LR Interface Off", command=lambda: utils.inter_off(1)).place(x=x_col, y=260)
+ttk.Button(text="Switch Antennas", command=lambda: utils.switch_antenna()).place(x=x_col, y=300)
 
-text_area.place(x=20, y=20) 
+status_textbox = Text(root, wrap=tk.WORD, width=40, height=20)
+status_textbox.place(x=450, y=20)
 
-text_area.tag_config('high_lat', background='yellow')
-text_area.tag_config('mid_lat', background='red')
-text_area.tag_config('good_lat', background='green')
+
+ping_textbox = Text(root, wrap=tk.WORD, width=15, height=20)
+
+ping_textbox.place(x=20, y=20) 
+ping_textbox.tag_config('high_lat', background='yellow')
+ping_textbox.tag_config('mid_lat', background='red')
+ping_textbox.tag_config('good_lat', background='green')
 
 def ping_textbox():
     tag = ''
 
-    text_area.config(state=tk.NORMAL)
+    ping_textbox.config(state=tk.NORMAL)
 
     p = int(ping(config.host_to_ping))
 
-    if p < 100:
+    if p < config.green_ping_threshold:
         tag = 'good_lat'
-    elif p < 180:
+    elif p < config.yellow_ping_threshold:
         tag = 'mid_lat'
     else:
         tag = 'high_lat'
 
-    text_area.insert(tk.INSERT, str(p) + ' ms \n', tag)
+    ping_textbox.insert(tk.INSERT, str(p) + ' ms \n', tag)
     
-    if int(text_area.index('end-1c').split('.')[0]) > 20:
-        text_area.delete("1.0", "2.0")
+    if int(ping_textbox.index('end-1c').split('.')[0]) > 20:
+        ping_textbox.delete("1.0", "2.0")
 
-    text_area.config(state=tk.DISABLED)
+    ping_textbox.config(state=tk.DISABLED)
     root.after(config.ping_interval, ping_textbox)
 
 def periodic_check():
