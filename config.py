@@ -23,6 +23,9 @@ class Config:
             self.ping_attempts = root[7].text
             self.beep_delay = root[8].text
             self.leaving_wait_aving_wait_time = root[9].text
+            self.host_to_ping = root[10].text
+            self.ping_interval = int(root[11].text)
+
         except:
             print(f'ERROR: Unable to parse {self.configPath}')
 

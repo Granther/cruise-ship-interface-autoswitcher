@@ -12,4 +12,7 @@
     <beep_delay>5</beep_delay>
 
     <leaving_wait_time>100</leaving_wait_time>
+
+    <host_to_ping>10.10.1.1</host_to_ping>
+    <ping_interval>750</ping_interval>
 </config>

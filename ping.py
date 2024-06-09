@@ -8,7 +8,7 @@ def ping(host, timeout=1.5):
     
     return reponseTime * 1000
 
-def attempt_multiple(n_times, host):
+def attempt_multiple(n_times: int, host: str):
     for _ in range(n_times):
         response = ping(host)
         if response:
@@ -16,12 +16,3 @@ def attempt_multiple(n_times, host):
         
     return False
 
-
-import xml.etree.ElementTree as ET
-tree = ET.parse('config.xml')
-root = tree.getroot()
-print(root.find('beep_timeout').text)
-print(root[3].text)
-
-
-#print(ping('10.10.5.5'))

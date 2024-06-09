@@ -1,5 +1,7 @@
 import os
 
+
+
 class Log:
     def __init__(self, className: str):
         try:
@@ -26,8 +28,4 @@ class Log:
         
         return True
     
-log = Log('Test')
-
-log.write_log('Im liggin')
-
 
