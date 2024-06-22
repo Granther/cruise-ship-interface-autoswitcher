@@ -1,0 +1,22 @@
+<config>
+    <lr_ssh_user>admin</lr_ssh_user>
+    <lr_ssh_pwd>l1zard5!</lr_ssh_pwd>
+    <lr_ip>10.10.1.191</lr_ip>
+
+    <sr_ssh_user>admin</sr_ssh_user>
+    <sr_ssh_pwd>l1zard5!</sr_ssh_pwd>
+    <sr_ip>10.10.1.175</sr_ip>
+
+    <beep_timeout>15</beep_timeout>
+    <ping_attempts>4</ping_attempts>
+    <beep_delay>5</beep_delay>
+
+    <leaving_wait_time>100</leaving_wait_time>
+
+    <host_to_ping>192.168.1.254</host_to_ping>
+    <ping_interval>750</ping_interval>
+    <periodic_check_interval>10</periodic_check_interval>
+
+    <yellow_ping_threshold>180</yellow_ping_threshold>
+    <green_ping_threshold>100</green_ping_threshold>
+</config>

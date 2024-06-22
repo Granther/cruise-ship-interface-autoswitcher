@@ -1,0 +1,54 @@
+AntennaSSH: Couldn't ping 192.168.1.173 after 4 tries
+AntennaSSH: Couldn't ping 192.168.1.12 after 4 tries
+AntennaSSH: Couldn't ping 192.168.1.12 after 4 tries
+AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authentication failed.
+AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authentication failed.
+AntennaSSH: Error connecting/creating ssh with host: 192.168.1.172. ERRCOD:Authentication failed.
+LogGeneralException: Tried to div by 0 dummy
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+UtilRemoteCommandException: Remote command returned stderr: 
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Config: here
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Config: ERROR: Unable to parse None, using hard coded Config. I DO NOT RECOMMEND THIS!!
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+AntennaSSH: Couldn't ping 192.168.1.172 after 4 tries
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
+Utils: Rebooting host with ID of 0 remotely
