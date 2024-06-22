@@ -24,12 +24,8 @@ class UtilStatusException(LogException):
         super().__init__(message)
 
 
-class Utils():
 
-    antenna_states = {
-        '0': 0,
-        '1': 0
-    }
+class Utils():
 
     command_dict = {
         'reboot': 'reboot now',

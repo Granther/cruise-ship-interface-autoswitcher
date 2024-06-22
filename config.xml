@@ -13,7 +13,7 @@
 
     <leaving_wait_time>100</leaving_wait_time>
 
-    <host_to_ping>10.10.1.1</host_to_ping>
+    <host_to_ping>192.168.1.254</host_to_ping>
     <ping_interval>750</ping_interval>
     <periodic_check_interval>10</periodic_check_interval>
 

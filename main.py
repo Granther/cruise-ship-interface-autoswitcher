@@ -10,18 +10,17 @@ from log import Log
 from utils import Utils
 
 config = Config()
-utils = Utils()
+utils = Utils(config=config)
+log = Log('main')
 
 root = Tk()
 root.geometry("800x400")
+root.title('Grants Better Ping Autoswitch')
 
-def ping_loc():
-    pass
+x_col = 200
 
-def test(gort):
-    print(gort)
-
-x_col = 250
+button_label = Label(root, text='Control')
+button_label.place(x=x_col, y=2)
 
 ttk.Button(text="Quit", command=lambda: root.destroy()).place(x=x_col, y=20)
 ttk.Button(text="Leaving", command=lambda: utils.leaving()).place(x=x_col, y=100)
@@ -31,44 +30,59 @@ ttk.Button(text="SR Interface Off", command=lambda: utils.inter_off(0)).place(x=
 ttk.Button(text="LR Interface Off", command=lambda: utils.inter_off(1)).place(x=x_col, y=260)
 ttk.Button(text="Switch Antennas", command=lambda: utils.switch_antenna()).place(x=x_col, y=300)
 
+status_label = Label(root, text='Status')
+status_label.place(x=450, y=2)
+
 status_textbox = Text(root, wrap=tk.WORD, width=40, height=20)
 status_textbox.place(x=450, y=20)
 
+ping_label = Label(root, text='Pings')
+ping_label.place(x=20, y=2)
 
 ping_textbox = Text(root, wrap=tk.WORD, width=15, height=20)
-
 ping_textbox.place(x=20, y=20) 
+
 ping_textbox.tag_config('high_lat', background='yellow')
 ping_textbox.tag_config('mid_lat', background='red')
 ping_textbox.tag_config('good_lat', background='green')
 
-def ping_textbox():
+def ping_loop():
     tag = ''
 
     ping_textbox.config(state=tk.NORMAL)
 
-    p = int(ping(config.host_to_ping))
+    ping_result = 999
 
-    if p < config.green_ping_threshold:
+    try:
+        ping_result = ping(config.host_to_ping, timeout=0.1)
+    except PingException:
+        pass
+    except Exception as e:
+        pass
+
+    if ping_result < config.green_ping_threshold:
         tag = 'good_lat'
-    elif p < config.yellow_ping_threshold:
+    elif ping_result < config.yellow_ping_threshold:
         tag = 'mid_lat'
     else:
         tag = 'high_lat'
 
-    ping_textbox.insert(tk.INSERT, str(p) + ' ms \n', tag)
+    ping_textbox.insert(tk.INSERT, str(ping_result) + ' ms \n', tag)
     
     if int(ping_textbox.index('end-1c').split('.')[0]) > 20:
         ping_textbox.delete("1.0", "2.0")
 
     ping_textbox.config(state=tk.DISABLED)
-    root.after(config.ping_interval, ping_textbox)
+    root.after(config.ping_interval, ping_loop)
 
-def periodic_check():
-    pass
-    root.after(config.periodic_check_interval, periodic_check)
+# def periodic_check():
+#     if utils.ath0_status(0) == 0:
 
-root.after(config.ping_interval, ping_textbox)
-root.after(config.periodic_check_interval, periodic_check)
+
+
+#     root.after(config.periodic_check_interval, periodic_check)
+
+root.after(config.ping_interval, ping_loop)
+#root.after(config.periodic_check_interval, periodic_check)
 
 root.mainloop()
